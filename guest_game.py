@@ -17,8 +17,12 @@ x=random.randint(start, end)
 #print(x)
 
 for i in range(count):
-    y=int(input(f"第{i+1}次，請猜一個數字({min}~{max}):"))
+    y=int(input(f"第{i+1}/{count}次，請猜一個數字({min}~{max}):"))
     
+    if y<min or y>max:
+        print("不要亂猜!!!")
+        continue
+
     # 猜對 + break
     if x==y:
         print("恭喜猜對!")
@@ -26,12 +30,14 @@ for i in range(count):
     
     # 猜錯
     if x>y:
-        min = y
-        print("猜大一點")
+        if y > min:
+            min = y+1
+        #print("猜大一點")
         
     else:
-        max = y
-        print("猜小一點")
+        if y < max:
+            max = y-1
+        #print("猜小一點")
    
 
 if x!=y:

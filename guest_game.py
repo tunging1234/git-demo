@@ -8,14 +8,16 @@ Created on Mon Jan 26 20:08:05 2026
 import random
 
 start,end = 1, 100
+count = 10
+min, max = start, end
 
 # 產生亂數
 x=random.randint(start, end)    
 # 提示答案
 #print(x)
 
-for i in range(10):
-    y=int(input(f"請猜一個數字({start}~{end}):"))
+for i in range(count):
+    y=int(input(f"第{i+1}次，請猜一個數字({min}~{max}):"))
     
     # 猜對 + break
     if x==y:
@@ -24,8 +26,11 @@ for i in range(10):
     
     # 猜錯
     if x>y:
+        min = y
         print("猜大一點")
+        
     else:
+        max = y
         print("猜小一點")
    
 
